@@ -55,17 +55,40 @@ func main() {
 		if err == nil {
 			fmt.Println("create at (Unix epoch timestamp):", t.Unix())
 		}
-		fmt.Println("email id:", payload.Data.EmailID)
-		fmt.Println("from:", payload.Data.From)
-		fmt.Println("to:", payload.Data.To)
-		fmt.Println("subject:", payload.Data.Subject)
-		if payload.Data.Click != nil {
-			fmt.Println("click:")
-			fmt.Println("  ip address:", payload.Data.Click.IPAddress)
-			fmt.Println("  link:", payload.Data.Click.Link)
-			fmt.Println("  timestamp:", payload.Data.Click.Timestamp)
-			fmt.Println("  user agent:", payload.Data.Click.UserAgent)
+
+		// for email events
+		if payload.Type == resend.EmailSent ||
+			payload.Type == resend.EmailDelivered ||
+			payload.Type == resend.EmailDeliveryDelayed ||
+			payload.Type == resend.EmailComplained ||
+			payload.Type == resend.EmailBounced ||
+			payload.Type == resend.EmailOpened ||
+			payload.Type == resend.EmailClicked {
+			fmt.Println("email id:", payload.Data.EmailID)
+			fmt.Println("from:", payload.Data.From)
+			fmt.Println("to:", payload.Data.To)
+			fmt.Println("subject:", payload.Data.Subject)
+			if payload.Data.Click != nil {
+				fmt.Println("click:")
+				fmt.Println("  ip address:", payload.Data.Click.IPAddress)
+				fmt.Println("  link:", payload.Data.Click.Link)
+				fmt.Println("  timestamp:", payload.Data.Click.Timestamp)
+				fmt.Println("  user agent:", payload.Data.Click.UserAgent)
+			}
 		}
+
+		// for contact events
+		if payload.Type == resend.ContactCreated ||
+			payload.Type == resend.ContactUpdated ||
+			payload.Type == resend.ContactDeleted {
+			fmt.Println("contact id:", payload.Data.ID)
+			fmt.Println("audience id:", payload.Data.AudienceID)
+			fmt.Println("email:", payload.Data.Email)
+			fmt.Println("first name:", payload.Data.FirstName)
+			fmt.Println("last name:", payload.Data.LastName)
+			fmt.Println("unsubscribed:", payload.Data.Unsubscribed)
+		}
+
 		fmt.Println("=====================================")
 
 		// send a response

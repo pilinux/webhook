@@ -4,7 +4,7 @@ processing webhooks easy
 
 ## Supported platforms
 
-- [ ] [Resend](https://resend.com/docs/dashboard/webhooks/introduction)
+- [x] [Resend](https://resend.com/docs/dashboard/webhooks/introduction)
   - Implemented event types
     - [x] `email.sent`
     - [x] `email.delivered`
@@ -13,6 +13,6 @@ processing webhooks easy
     - [x] `email.bounced`
     - [x] `email.opened`
     - [x] `email.clicked`
-    - [ ] `contact.created`
-    - [ ] `contact.updated`
-    - [ ] `contact.deleted`
+    - [x] `contact.created`
+    - [x] `contact.updated`
+    - [x] `contact.deleted`
