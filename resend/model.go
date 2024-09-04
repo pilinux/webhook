@@ -36,7 +36,7 @@ type Data struct {
 	EmailID   string   `json:"email_id"`
 	From      string   `json:"from"`
 	To        []string `json:"to"`
-	Click     Click    `json:"click"`
+	Click     *Click   `json:"click,omitempty"`
 	Subject   string   `json:"subject"`
 }
 
