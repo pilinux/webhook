@@ -127,8 +127,9 @@ processing webhooks easy
       - [x] `invoice.updated`
       - [x] `invoice.voided`
       - [x] `invoice.will_be_due`
-    - [ ] `invoiceitem.created`
-    - [ ] `invoiceitem.deleted`
+    - [x] [invoiceitem](https://docs.stripe.com/api/invoiceitems)
+      - [x] `invoiceitem.created`
+      - [x] `invoiceitem.deleted`
     - [ ] `issuing_authorization.created`
     - [ ] `issuing_authorization.request`
     - [ ] `issuing_authorization.updated`

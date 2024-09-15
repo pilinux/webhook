@@ -196,6 +196,26 @@ func ProcessEventInvoice(event stripe.Event) (invoice stripe.Invoice, err error)
 	return
 }
 
+// ProcessEventInvoiceItem processes the incoming event and binds the raw data to a stripe.InvoiceItem struct.
+/*
+- https://docs.stripe.com/api/invoiceitems/object
+
+- `invoiceitem.created`
+
+- `invoiceitem.deleted`
+*/
+func ProcessEventInvoiceItem(event stripe.Event) (invoiceItem stripe.InvoiceItem, err error) {
+	switch event.Type {
+	case
+		"invoiceitem.created",
+		"invoiceitem.deleted":
+		err = json.Unmarshal(event.Data.Raw, &invoiceItem)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventPaymentIntent processes the incoming event and binds the raw data to a stripe.PaymentIntent struct.
 /*
 - https://docs.stripe.com/api/payment_intents/object
