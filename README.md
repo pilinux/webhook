@@ -111,21 +111,22 @@ processing webhooks easy
     - [ ] `identity.verification_session.redacted`
     - [ ] `identity.verification_session.requires_input`
     - [ ] `identity.verification_session.verified`
-    - [ ] `invoice.created`
-    - [ ] `invoice.deleted`
-    - [ ] `invoice.finalization_failed`
-    - [ ] `invoice.finalized`
-    - [ ] `invoice.marked_uncollectible`
-    - [ ] `invoice.overdue`
-    - [ ] `invoice.paid`
-    - [ ] `invoice.payment_action_required`
-    - [ ] `invoice.payment_failed`
-    - [ ] `invoice.payment_succeeded`
-    - [ ] `invoice.sent`
-    - [ ] `invoice.upcoming`
-    - [ ] `invoice.updated`
-    - [ ] `invoice.voided`
-    - [ ] `invoice.will_be_due`
+    - [x] [invoice](https://docs.stripe.com/api/invoices)
+      - [x] `invoice.created`
+      - [x] `invoice.deleted`
+      - [x] `invoice.finalization_failed`
+      - [x] `invoice.finalized`
+      - [x] `invoice.marked_uncollectible`
+      - [x] `invoice.overdue`
+      - [x] `invoice.paid`
+      - [x] `invoice.payment_action_required`
+      - [x] `invoice.payment_failed`
+      - [x] `invoice.payment_succeeded`
+      - [x] `invoice.sent`
+      - [x] `invoice.upcoming`
+      - [x] `invoice.updated`
+      - [x] `invoice.voided`
+      - [x] `invoice.will_be_due`
     - [ ] `invoiceitem.created`
     - [ ] `invoiceitem.deleted`
     - [ ] `issuing_authorization.created`

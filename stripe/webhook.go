@@ -137,6 +137,65 @@ func ProcessEventCustomerSubscription(event stripe.Event) (subscription stripe.S
 	return
 }
 
+// ProcessEventInvoice processes the incoming event and binds the raw data to a stripe.Invoice struct.
+/*
+- https://docs.stripe.com/api/invoices/object
+
+- `invoice.created`
+
+- `invoice.deleted`
+
+- `invoice.finalization_failed`
+
+- `invoice.finalized`
+
+- `invoice.marked_uncollectible`
+
+- `invoice.overdue`
+
+- `invoice.paid`
+
+- `invoice.payment_action_required`
+
+- `invoice.payment_failed`
+
+- `invoice.payment_succeeded`
+
+- `invoice.sent`
+
+- `invoice.upcoming`
+
+- `invoice.updated`
+
+- `invoice.voided`
+
+- `invoice.will_be_due`
+*/
+func ProcessEventInvoice(event stripe.Event) (invoice stripe.Invoice, err error) {
+	switch event.Type {
+	case
+		"invoice.created",
+		"invoice.deleted",
+		"invoice.finalization_failed",
+		"invoice.finalized",
+		"invoice.marked_uncollectible",
+		"invoice.overdue",
+		"invoice.paid",
+		"invoice.payment_action_required",
+		"invoice.payment_failed",
+		"invoice.payment_succeeded",
+		"invoice.sent",
+		"invoice.upcoming",
+		"invoice.updated",
+		"invoice.voided",
+		"invoice.will_be_due":
+		err = json.Unmarshal(event.Data.Raw, &invoice)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventPaymentIntent processes the incoming event and binds the raw data to a stripe.PaymentIntent struct.
 /*
 - https://docs.stripe.com/api/payment_intents/object
