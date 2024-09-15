@@ -17,7 +17,7 @@ processing webhooks easy
     - [x] `contact.updated`
     - [x] `contact.deleted`
 
-- [ ] [stripe events](https://docs.stripe.com/webhooks)
+- [x] [stripe events](https://docs.stripe.com/webhooks)
   - Go SDK version: `v79`
   - API version: `2024-06-20`
   - [Handle webhook versioning](https://docs.stripe.com/webhooks/versioning)
@@ -75,6 +75,7 @@ processing webhooks easy
     - [ ] `credit_note.voided`
     - [ ] `customer_cash_balance_transaction.created`
     - [ ] `customer.created`
+    - [ ] `customer.updated`
     - [ ] `customer.deleted`
     - [ ] `customer.discount.created`
     - [ ] `customer.discount.deleted`
@@ -95,7 +96,6 @@ processing webhooks easy
     - [ ] `customer.tax_id.created`
     - [ ] `customer.tax_id.deleted`
     - [ ] `customer.tax_id.updated`
-    - [ ] `customer.updated`
     - [ ] `entitlements.active_entitlement_summary.updated`
     - [ ] `file.created`
     - [ ] `financial_connections.account.created`
@@ -200,11 +200,12 @@ processing webhooks easy
     - [ ] `reporting.report_type.updated`
     - [ ] `review.closed`
     - [ ] `review.opened`
-    - [ ] `setup_intent.canceled`
-    - [ ] `setup_intent.created`
-    - [ ] `setup_intent.requires_action`
-    - [ ] `setup_intent.setup_failed`
-    - [ ] `setup_intent.succeeded`
+    - [x] [setup_intent](https://docs.stripe.com/api/setup_intents)
+      - [x] `setup_intent.canceled`
+      - [x] `setup_intent.created`
+      - [x] `setup_intent.requires_action`
+      - [x] `setup_intent.setup_failed`
+      - [x] `setup_intent.succeeded`
     - [ ] `sigma.scheduled_query_run.created`
     - [ ] `source.canceled`
     - [ ] `source.chargeable`
@@ -230,11 +231,12 @@ processing webhooks easy
     - [ ] `test_helpers.test_clock.deleted`
     - [ ] `test_helpers.test_clock.internal_failure`
     - [ ] `test_helpers.test_clock.ready`
-    - [ ] `topup.canceled`
-    - [ ] `topup.created`
-    - [ ] `topup.failed`
-    - [ ] `topup.reversed`
-    - [ ] `topup.succeeded`
+    - [ ] [topup](https://docs.stripe.com/api/topups)
+      - [ ] `topup.canceled`
+      - [ ] `topup.created`
+      - [ ] `topup.failed`
+      - [ ] `topup.reversed`
+      - [ ] `topup.succeeded`
     - [ ] `transfer.created`
     - [ ] `transfer.reversed`
     - [ ] `transfer.updated`

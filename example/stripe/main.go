@@ -78,6 +78,16 @@ func main() {
 				}
 				fmt.Printf("payment intent: %+v\n", paymentIntent)
 			}
+
+			// event.Type contains the prefix "setup_intent."
+			if strings.HasPrefix(string(e.Type), "setup_intent.") {
+				setupIntent, err := wh.ProcessEventSetupIntent(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("setup intent: %+v\n", setupIntent)
+			}
 		}(event)
 
 		// immediately respond with a 200 status code to stripe

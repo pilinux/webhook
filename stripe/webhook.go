@@ -233,3 +233,32 @@ func ProcessEventPaymentIntent(event stripe.Event) (paymentIntent stripe.Payment
 	}
 	return
 }
+
+// ProcessEventSetupIntent processes the incoming event and binds the raw data to a stripe.SetupIntent struct.
+/*
+- https://docs.stripe.com/api/setup_intents/object
+
+- `setup_intent.canceled`
+
+- `setup_intent.created`
+
+- `setup_intent.requires_action`
+
+- `setup_intent.setup_failed`
+
+- `setup_intent.succeeded`
+*/
+func ProcessEventSetupIntent(event stripe.Event) (setupIntent stripe.SetupIntent, err error) {
+	switch event.Type {
+	case
+		"setup_intent.canceled",
+		"setup_intent.created",
+		"setup_intent.requires_action",
+		"setup_intent.setup_failed",
+		"setup_intent.succeeded":
+		err = json.Unmarshal(event.Data.Raw, &setupIntent)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
