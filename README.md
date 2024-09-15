@@ -75,9 +75,10 @@ processing webhooks easy
     - [ ] `credit_note.updated`
     - [ ] `credit_note.voided`
     - [ ] `customer_cash_balance_transaction.created`
-    - [ ] `customer.created`
-    - [ ] `customer.updated`
-    - [ ] `customer.deleted`
+    - [x] [customer](https://docs.stripe.com/api/customers)
+      - [x] `customer.created`
+      - [x] `customer.updated`
+      - [x] `customer.deleted`
     - [ ] `customer.discount.created`
     - [ ] `customer.discount.deleted`
     - [ ] `customer.discount.updated`

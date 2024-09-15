@@ -125,6 +125,29 @@ func ProcessEventCheckoutSession(event stripe.Event) (checkoutSession stripe.Che
 	return
 }
 
+// ProcessEventCustomer processes the incoming event and binds the raw data to a stripe.Customer struct.
+/*
+- https://docs.stripe.com/api/customers/object
+
+- `customer.created`
+
+- `customer.updated`
+
+- `customer.deleted`
+*/
+func ProcessEventCustomer(event stripe.Event) (customer stripe.Customer, err error) {
+	switch event.Type {
+	case
+		"customer.created",
+		"customer.updated",
+		"customer.deleted":
+		err = json.Unmarshal(event.Data.Raw, &customer)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventCustomerSubscription processes the incoming event and binds the raw data to a stripe.Subscription struct.
 /*
 - https://docs.stripe.com/api/subscriptions/object
