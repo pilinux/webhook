@@ -42,19 +42,20 @@ processing webhooks easy
     - [ ] `billing.alert.triggered`
     - [ ] `capability.updated`
     - [ ] `cash_balance.funds_available`
-    - [ ] `charge.captured`
-    - [ ] `charge.dispute.closed`
-    - [ ] `charge.dispute.created`
-    - [ ] `charge.dispute.funds_reinstated`
-    - [ ] `charge.dispute.funds_withdrawn`
-    - [ ] `charge.dispute.updated`
-    - [ ] `charge.expired`
-    - [ ] `charge.failed`
-    - [ ] `charge.pending`
-    - [ ] `charge.refund.updated`
-    - [ ] `charge.refunded`
-    - [ ] `charge.succeeded`
-    - [ ] `charge.updated`
+    - [x] [charge](https://docs.stripe.com/api/charges)
+      - [x] `charge.captured`
+      - [x] `charge.dispute.closed`
+      - [x] `charge.dispute.created`
+      - [x] `charge.dispute.funds_reinstated`
+      - [x] `charge.dispute.funds_withdrawn`
+      - [x] `charge.dispute.updated`
+      - [x] `charge.expired`
+      - [x] `charge.failed`
+      - [x] `charge.pending`
+      - [x] `charge.refund.updated`
+      - [x] `charge.refunded`
+      - [x] `charge.succeeded`
+      - [x] `charge.updated`
     - [ ] `checkout.session.async_payment_failed`
     - [ ] `checkout.session.async_payment_succeeded`
     - [ ] `checkout.session.completed`
@@ -82,7 +83,7 @@ processing webhooks easy
     - [ ] `customer.source.deleted`
     - [ ] `customer.source.expiring`
     - [ ] `customer.source.updated`
-    - [ ] [customer.subscription](https://docs.stripe.com/api/subscriptions)
+    - [x] [customer.subscription](https://docs.stripe.com/api/subscriptions)
       - [x] `customer.subscription.created`
       - [x] `customer.subscription.deleted`
       - [x] `customer.subscription.paused`

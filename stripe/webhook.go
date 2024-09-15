@@ -46,6 +46,59 @@ func HandleRequest(w http.ResponseWriter, r *http.Request, secret string) (strip
 	return event, http.StatusOK, nil
 }
 
+// ProcessEventCharge processes the incoming event and binds the raw data to a stripe.Charge struct.
+/*
+- https://docs.stripe.com/api/charges/object
+
+- `charge.captured`
+
+- `charge.dispute.closed`
+
+- `charge.dispute.created`
+
+- `charge.dispute.funds_reinstated`
+
+- `charge.dispute.funds_withdrawn`
+
+- `charge.dispute.updated`
+
+- `charge.expired`
+
+- `charge.failed`
+
+- `charge.pending`
+
+- `charge.refund.updated`
+
+- `charge.refunded`
+
+- `charge.succeeded`
+
+- `charge.updated`
+*/
+func ProcessEventCharge(event stripe.Event) (charge stripe.Charge, err error) {
+	switch event.Type {
+	case
+		"charge.captured",
+		"charge.dispute.closed",
+		"charge.dispute.created",
+		"charge.dispute.funds_reinstated",
+		"charge.dispute.funds_withdrawn",
+		"charge.dispute.updated",
+		"charge.expired",
+		"charge.failed",
+		"charge.pending",
+		"charge.refund.updated",
+		"charge.refunded",
+		"charge.succeeded",
+		"charge.updated":
+		err = json.Unmarshal(event.Data.Raw, &charge)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventCustomerSubscription processes the incoming event and binds the raw data to a stripe.Subscription struct.
 /*
 - https://docs.stripe.com/api/subscriptions/object

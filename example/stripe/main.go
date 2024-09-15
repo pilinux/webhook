@@ -39,6 +39,16 @@ func main() {
 			fmt.Println("event type:", e.Type)
 			fmt.Println("event id:", e.ID)
 
+			// event.Type contains the prefix "charge."
+			if strings.HasPrefix(string(e.Type), "charge.") {
+				charge, err := wh.ProcessEventCharge(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("charge: %+v\n", charge)
+			}
+
 			// event.Type contains the prefix "customer.subscription."
 			if strings.HasPrefix(string(e.Type), "customer.subscription.") {
 				subscription, err := wh.ProcessEventCustomerSubscription(e)
