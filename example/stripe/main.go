@@ -89,6 +89,16 @@ func main() {
 				fmt.Printf("invoice item: %+v\n", invoiceItem)
 			}
 
+			// event.Type contains the prefix "mandate."
+			if strings.HasPrefix(string(e.Type), "mandate.") {
+				mandate, err := wh.ProcessEventMandate(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("mandate: %+v\n", mandate)
+			}
+
 			// event.Type contains the prefix "payment_intent."
 			if strings.HasPrefix(string(e.Type), "payment_intent.") {
 				paymentIntent, err := wh.ProcessEventPaymentIntent(e)

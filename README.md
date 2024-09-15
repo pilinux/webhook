@@ -152,7 +152,8 @@ processing webhooks easy
     - [ ] `issuing_token.updated`
     - [ ] `issuing_transaction.created`
     - [ ] `issuing_transaction.updated`
-    - [ ] `mandate.updated`
+    - [x] [mandate](https://docs.stripe.com/api/mandates)
+      - [x] `mandate.updated`
     - [x] [payment_intent](https://docs.stripe.com/api/payment_intents)
       - [x] `payment_intent.amount_capturable_updated`
       - [x] `payment_intent.canceled`

@@ -242,6 +242,22 @@ func ProcessEventInvoiceItem(event stripe.Event) (invoiceItem stripe.InvoiceItem
 	return
 }
 
+// ProcessEventMandate processes the incoming event and binds the raw data to a stripe.Mandate struct.
+/*
+- https://docs.stripe.com/api/mandates/object
+
+- `mandate.updated`
+*/
+func ProcessEventMandate(event stripe.Event) (mandate stripe.Mandate, err error) {
+	switch event.Type {
+	case "mandate.updated":
+		err = json.Unmarshal(event.Data.Raw, &mandate)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventPaymentIntent processes the incoming event and binds the raw data to a stripe.PaymentIntent struct.
 /*
 - https://docs.stripe.com/api/payment_intents/object
