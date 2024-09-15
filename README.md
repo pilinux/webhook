@@ -185,9 +185,10 @@ processing webhooks easy
       - [x] `price.created`
       - [x] `price.deleted`
       - [x] `price.updated`
-    - [ ] `product.created`
-    - [ ] `product.deleted`
-    - [ ] `product.updated`
+    - [x] [product](https://docs.stripe.com/api/products)
+      - [x] `product.created`
+      - [x] `product.deleted`
+      - [x] `product.updated`
     - [ ] `promotion_code.created`
     - [ ] `promotion_code.updated`
     - [ ] `quote.accepted`

@@ -326,6 +326,29 @@ func ProcessEventPrice(event stripe.Event) (price stripe.Price, err error) {
 	return
 }
 
+// ProcessEventProduct processes the incoming event and binds the raw data to a stripe.Product struct.
+/*
+- https://docs.stripe.com/api/products/object
+
+- `product.created`
+
+- `product.deleted`
+
+- `product.updated`
+*/
+func ProcessEventProduct(event stripe.Event) (product stripe.Product, err error) {
+	switch event.Type {
+	case
+		"product.created",
+		"product.deleted",
+		"product.updated":
+		err = json.Unmarshal(event.Data.Raw, &product)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventSetupIntent processes the incoming event and binds the raw data to a stripe.SetupIntent struct.
 /*
 - https://docs.stripe.com/api/setup_intents/object

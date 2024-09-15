@@ -119,6 +119,16 @@ func main() {
 				fmt.Printf("price: %+v\n", price)
 			}
 
+			// event.Type contains the prefix "product."
+			if strings.HasPrefix(string(e.Type), "product.") {
+				product, err := wh.ProcessEventProduct(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("product: %+v\n", product)
+			}
+
 			// event.Type contains the prefix "setup_intent."
 			if strings.HasPrefix(string(e.Type), "setup_intent.") {
 				setupIntent, err := wh.ProcessEventSetupIntent(e)
