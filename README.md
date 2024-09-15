@@ -56,10 +56,11 @@ processing webhooks easy
       - [x] `charge.refunded`
       - [x] `charge.succeeded`
       - [x] `charge.updated`
-    - [ ] `checkout.session.async_payment_failed`
-    - [ ] `checkout.session.async_payment_succeeded`
-    - [ ] `checkout.session.completed`
-    - [ ] `checkout.session.expired`
+    - [x] [checkout.session](https://docs.stripe.com/api/checkout/sessions)
+      - [x] `checkout.session.async_payment_failed`
+      - [x] `checkout.session.async_payment_succeeded`
+      - [x] `checkout.session.completed`
+      - [x] `checkout.session.expired`
     - [ ] `climate.order.canceled`
     - [ ] `climate.order.created`
     - [ ] `climate.order.delayed`

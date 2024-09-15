@@ -99,6 +99,32 @@ func ProcessEventCharge(event stripe.Event) (charge stripe.Charge, err error) {
 	return
 }
 
+// ProcessEventCheckoutSession processes the incoming event and binds the raw data to a stripe.CheckoutSession struct.
+/*
+- https://docs.stripe.com/api/checkout/sessions/object
+
+- `checkout.session.async_payment_failed`
+
+- `checkout.session.async_payment_succeeded`
+
+- `checkout.session.completed`
+
+- `checkout.session.expired`
+*/
+func ProcessEventCheckoutSession(event stripe.Event) (checkoutSession stripe.CheckoutSession, err error) {
+	switch event.Type {
+	case
+		"checkout.session.async_payment_failed",
+		"checkout.session.async_payment_succeeded",
+		"checkout.session.completed",
+		"checkout.session.expired":
+		err = json.Unmarshal(event.Data.Raw, &checkoutSession)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventCustomerSubscription processes the incoming event and binds the raw data to a stripe.Subscription struct.
 /*
 - https://docs.stripe.com/api/subscriptions/object
