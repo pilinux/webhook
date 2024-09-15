@@ -282,3 +282,38 @@ func ProcessEventSetupIntent(event stripe.Event) (setupIntent stripe.SetupIntent
 	}
 	return
 }
+
+// ProcessEventSubscriptionSchedule processes the incoming event and binds the raw data to a stripe.SubscriptionSchedule struct.
+/*
+- https://docs.stripe.com/api/subscription_schedules/object
+
+- `subscription_schedule.aborted`
+
+- `subscription_schedule.canceled`
+
+- `subscription_schedule.completed`
+
+- `subscription_schedule.created`
+
+- `subscription_schedule.expiring`
+
+- `subscription_schedule.released`
+
+- `subscription_schedule.updated`
+*/
+func ProcessEventSubscriptionSchedule(event stripe.Event) (subscriptionSchedule stripe.SubscriptionSchedule, err error) {
+	switch event.Type {
+	case
+		"subscription_schedule.aborted",
+		"subscription_schedule.canceled",
+		"subscription_schedule.completed",
+		"subscription_schedule.created",
+		"subscription_schedule.expiring",
+		"subscription_schedule.released",
+		"subscription_schedule.updated":
+		err = json.Unmarshal(event.Data.Raw, &subscriptionSchedule)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}

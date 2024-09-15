@@ -215,13 +215,14 @@ processing webhooks easy
     - [ ] `source.refund_attributes_required`
     - [ ] `source.transaction.created`
     - [ ] `source.transaction.updated`
-    - [ ] `subscription_schedule.aborted`
-    - [ ] `subscription_schedule.canceled`
-    - [ ] `subscription_schedule.completed`
-    - [ ] `subscription_schedule.created`
-    - [ ] `subscription_schedule.expiring`
-    - [ ] `subscription_schedule.released`
-    - [ ] `subscription_schedule.updated`
+    - [x] [subscription_schedule](https://docs.stripe.com/api/subscription_schedules)
+      - [x] `subscription_schedule.aborted`
+      - [x] `subscription_schedule.canceled`
+      - [x] `subscription_schedule.completed`
+      - [x] `subscription_schedule.created`
+      - [x] `subscription_schedule.expiring`
+      - [x] `subscription_schedule.released`
+      - [x] `subscription_schedule.updated`
     - [ ] `tax_rate.created`
     - [ ] `tax_rate.updated`
     - [ ] `tax.settings.updated`

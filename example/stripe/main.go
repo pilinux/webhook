@@ -98,6 +98,16 @@ func main() {
 				}
 				fmt.Printf("setup intent: %+v\n", setupIntent)
 			}
+
+			// event.Type contains the prefix "subscription_schedule."
+			if strings.HasPrefix(string(e.Type), "subscription_schedule.") {
+				subscriptionSchedule, err := wh.ProcessEventSubscriptionSchedule(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("subscription schedule: %+v\n", subscriptionSchedule)
+			}
 		}(event)
 
 		// immediately respond with a 200 status code to stripe
