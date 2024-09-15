@@ -150,14 +150,15 @@ processing webhooks easy
     - [ ] `issuing_transaction.created`
     - [ ] `issuing_transaction.updated`
     - [ ] `mandate.updated`
-    - [ ] `payment_intent.amount_capturable_updated`
-    - [ ] `payment_intent.canceled`
-    - [ ] `payment_intent.created`
-    - [ ] `payment_intent.partially_funded`
-    - [ ] `payment_intent.payment_failed`
-    - [ ] `payment_intent.processing`
-    - [ ] `payment_intent.requires_action`
-    - [ ] `payment_intent.succeeded`
+    - [x] [payment_intent](https://docs.stripe.com/api/payment_intents)
+      - [x] `payment_intent.amount_capturable_updated`
+      - [x] `payment_intent.canceled`
+      - [x] `payment_intent.created`
+      - [x] `payment_intent.partially_funded`
+      - [x] `payment_intent.payment_failed`
+      - [x] `payment_intent.processing`
+      - [x] `payment_intent.requires_action`
+      - [x] `payment_intent.succeeded`
     - [ ] `payment_link.created`
     - [ ] `payment_link.updated`
     - [ ] `payment_method.attached`

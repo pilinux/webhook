@@ -136,3 +136,41 @@ func ProcessEventCustomerSubscription(event stripe.Event) (subscription stripe.S
 	}
 	return
 }
+
+// ProcessEventPaymentIntent processes the incoming event and binds the raw data to a stripe.PaymentIntent struct.
+/*
+- https://docs.stripe.com/api/payment_intents/object
+
+- `payment_intent.amount_capturable_updated`
+
+- `payment_intent.canceled`
+
+- `payment_intent.created`
+
+- `payment_intent.partially_funded`
+
+- `payment_intent.payment_failed`
+
+- `payment_intent.processing`
+
+- `payment_intent.requires_action`
+
+- `payment_intent.succeeded`
+*/
+func ProcessEventPaymentIntent(event stripe.Event) (paymentIntent stripe.PaymentIntent, err error) {
+	switch event.Type {
+	case
+		"payment_intent.amount_capturable_updated",
+		"payment_intent.canceled",
+		"payment_intent.created",
+		"payment_intent.partially_funded",
+		"payment_intent.payment_failed",
+		"payment_intent.processing",
+		"payment_intent.requires_action",
+		"payment_intent.succeeded":
+		err = json.Unmarshal(event.Data.Raw, &paymentIntent)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
