@@ -99,6 +99,16 @@ func main() {
 				fmt.Printf("payment intent: %+v\n", paymentIntent)
 			}
 
+			// event.Type contains the prefix "plan."
+			if strings.HasPrefix(string(e.Type), "plan.") {
+				plan, err := wh.ProcessEventPlan(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("plan: %+v\n", plan)
+			}
+
 			// event.Type contains the prefix "setup_intent."
 			if strings.HasPrefix(string(e.Type), "setup_intent.") {
 				setupIntent, err := wh.ProcessEventSetupIntent(e)

@@ -177,9 +177,10 @@ processing webhooks easy
     - [ ] `person.created`
     - [ ] `person.deleted`
     - [ ] `person.updated`
-    - [ ] `plan.created`
-    - [ ] `plan.deleted`
-    - [ ] `plan.updated`
+    - [x] [plan](https://docs.stripe.com/api/plans)
+      - [x] `plan.created`
+      - [x] `plan.deleted`
+      - [x] `plan.updated`
     - [ ] `price.created`
     - [ ] `price.deleted`
     - [ ] `price.updated`
