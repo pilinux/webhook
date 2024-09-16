@@ -35,7 +35,8 @@ processing webhooks easy
     - [ ] `application_fee.created`
     - [ ] `application_fee.refund.updated`
     - [ ] `application_fee.refunded`
-    - [ ] `balance.available`
+    - [x] [balance](https://docs.stripe.com/api/balance)
+      - [x] `balance.available`
     - [ ] `billing_portal.configuration.created`
     - [ ] `billing_portal.configuration.updated`
     - [ ] `billing_portal.session.created`

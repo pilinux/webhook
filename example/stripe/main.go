@@ -39,6 +39,16 @@ func main() {
 			fmt.Println("event type:", e.Type)
 			fmt.Println("event id:", e.ID)
 
+			// event.Type contains the prefix "balance."
+			if strings.HasPrefix(string(e.Type), "balance.") {
+				balance, err := wh.ProcessEventBalance(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("balance: %+v\n", balance)
+			}
+
 			// event.Type contains the prefix "charge."
 			if strings.HasPrefix(string(e.Type), "charge.") {
 				charge, err := wh.ProcessEventCharge(e)

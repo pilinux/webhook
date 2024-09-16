@@ -46,6 +46,22 @@ func HandleRequest(w http.ResponseWriter, r *http.Request, secret string) (strip
 	return event, http.StatusOK, nil
 }
 
+// ProcessEventBalance processes the incoming event and binds the raw data to a stripe.Balance struct.
+/*
+- https://docs.stripe.com/api/balance/balance_object
+
+- `balance.available`
+*/
+func ProcessEventBalance(event stripe.Event) (balance stripe.Balance, err error) {
+	switch event.Type {
+	case "balance.available":
+		err = json.Unmarshal(event.Data.Raw, &balance)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventCharge processes the incoming event and binds the raw data to a stripe.Charge struct.
 /*
 - https://docs.stripe.com/api/charges/object
