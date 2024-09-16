@@ -700,3 +700,19 @@ func ProcessEventTaxRate(event stripe.Event) (taxRate stripe.TaxRate, err error)
 	}
 	return
 }
+
+// ProcessEventTaxSettings processes the incoming event and binds the raw data to a stripe.TaxSettings struct.
+/*
+- https://docs.stripe.com/api/tax/settings/object
+
+- `tax.settings.updated`
+*/
+func ProcessEventTaxSettings(event stripe.Event) (taxSettings stripe.TaxSettings, err error) {
+	switch event.Type {
+	case "tax.settings.updated":
+		err = json.Unmarshal(event.Data.Raw, &taxSettings)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}

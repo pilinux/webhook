@@ -242,7 +242,8 @@ processing webhooks easy
     - [x] [tax_rate](https://docs.stripe.com/api/tax_rates)
       - [x] `tax_rate.created`
       - [x] `tax_rate.updated`
-    - [ ] `tax.settings.updated`
+    - [x] [tax.settings](https://docs.stripe.com/api/tax/settings)
+      - [x] `tax.settings.updated`
     - [ ] `terminal.reader.action_failed`
     - [ ] `terminal.reader.action_succeeded`
     - [ ] `test_helpers.test_clock.advancing`
