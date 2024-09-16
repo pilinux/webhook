@@ -457,6 +457,35 @@ func ProcessEventProduct(event stripe.Event) (product stripe.Product, err error)
 	return
 }
 
+// ProcessEventQuote processes the incoming event and binds the raw data to a stripe.Quote struct.
+/*
+- https://docs.stripe.com/api/quotes/object
+
+- `quote.accepted`
+
+- `quote.canceled`
+
+- `quote.created`
+
+- `quote.finalized`
+
+- `quote.will_expire`
+*/
+func ProcessEventQuote(event stripe.Event) (quote stripe.Quote, err error) {
+	switch event.Type {
+	case
+		"quote.accepted",
+		"quote.canceled",
+		"quote.created",
+		"quote.finalized",
+		"quote.will_expire":
+		err = json.Unmarshal(event.Data.Raw, &quote)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventSetupIntent processes the incoming event and binds the raw data to a stripe.SetupIntent struct.
 /*
 - https://docs.stripe.com/api/setup_intents/object

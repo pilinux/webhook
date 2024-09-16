@@ -196,11 +196,12 @@ processing webhooks easy
       - [x] `product.updated`
     - [ ] `promotion_code.created`
     - [ ] `promotion_code.updated`
-    - [ ] `quote.accepted`
-    - [ ] `quote.canceled`
-    - [ ] `quote.created`
-    - [ ] `quote.finalized`
-    - [ ] `quote.will_expire`
+    - [x] [quote](https://docs.stripe.com/api/quotes)
+      - [x] `quote.accepted`
+      - [x] `quote.canceled`
+      - [x] `quote.created`
+      - [x] `quote.finalized`
+      - [x] `quote.will_expire`
     - [ ] `radar.early_fraud_warning.created`
     - [ ] `radar.early_fraud_warning.updated`
     - [ ] `refund.created`
