@@ -59,6 +59,16 @@ func main() {
 				fmt.Printf("checkout session: %+v\n", checkoutSession)
 			}
 
+			// event.Type contains the prefix "coupon."
+			if strings.HasPrefix(string(e.Type), "coupon.") {
+				coupon, err := wh.ProcessEventCoupon(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("coupon: %+v\n", coupon)
+			}
+
 			// event.Type contains the prefix "customer.subscription."
 			if strings.HasPrefix(string(e.Type), "customer.subscription.") {
 				subscription, err := wh.ProcessEventCustomerSubscription(e)

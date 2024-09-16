@@ -68,9 +68,10 @@ processing webhooks easy
     - [ ] `climate.order.product_substituted`
     - [ ] `climate.product.created`
     - [ ] `climate.product.pricing_updated`
-    - [ ] `coupon.created`
-    - [ ] `coupon.deleted`
-    - [ ] `coupon.updated`
+    - [x] [coupon](https://docs.stripe.com/api/coupons)
+      - [x] `coupon.created`
+      - [x] `coupon.deleted`
+      - [x] `coupon.updated`
     - [ ] `credit_note.created`
     - [ ] `credit_note.updated`
     - [ ] `credit_note.voided`

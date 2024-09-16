@@ -125,6 +125,29 @@ func ProcessEventCheckoutSession(event stripe.Event) (checkoutSession stripe.Che
 	return
 }
 
+// ProcessEventCoupon processes the incoming event and binds the raw data to a stripe.Coupon struct.
+/*
+- https://docs.stripe.com/api/coupons/object
+
+- `coupon.created`
+
+- `coupon.deleted`
+
+- `coupon.updated`
+*/
+func ProcessEventCoupon(event stripe.Event) (coupon stripe.Coupon, err error) {
+	switch event.Type {
+	case
+		"coupon.created",
+		"coupon.deleted",
+		"coupon.updated":
+		err = json.Unmarshal(event.Data.Raw, &coupon)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventCustomer processes the incoming event and binds the raw data to a stripe.Customer struct.
 /*
 - https://docs.stripe.com/api/customers/object
