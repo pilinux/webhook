@@ -210,6 +210,29 @@ func ProcessEventCustomer(event stripe.Event) (customer stripe.Customer, err err
 	return
 }
 
+// ProcessEventCustomerDiscount processes the incoming event and binds the raw data to a stripe.Discount struct.
+/*
+- https://docs.stripe.com/api/discounts/object
+
+- `customer.discount.created`
+
+- `customer.discount.deleted`
+
+- `customer.discount.updated`
+*/
+func ProcessEventCustomerDiscount(event stripe.Event) (discount stripe.Discount, err error) {
+	switch event.Type {
+	case
+		"customer.discount.created",
+		"customer.discount.deleted",
+		"customer.discount.updated":
+		err = json.Unmarshal(event.Data.Raw, &discount)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventCustomerSubscription processes the incoming event and binds the raw data to a stripe.Subscription struct.
 /*
 - https://docs.stripe.com/api/subscriptions/object

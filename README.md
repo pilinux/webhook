@@ -82,9 +82,10 @@ processing webhooks easy
       - [x] `customer.created`
       - [x] `customer.updated`
       - [x] `customer.deleted`
-    - [ ] `customer.discount.created`
-    - [ ] `customer.discount.deleted`
-    - [ ] `customer.discount.updated`
+    - [x] [customer.discount](https://docs.stripe.com/api/discounts)
+      - [x] `customer.discount.created`
+      - [x] `customer.discount.deleted`
+      - [x] `customer.discount.updated`
     - [ ] `customer.source.created`
     - [ ] `customer.source.deleted`
     - [ ] `customer.source.expiring`
