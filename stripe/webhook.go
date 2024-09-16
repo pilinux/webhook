@@ -680,3 +680,23 @@ func ProcessEventSubscriptionSchedule(event stripe.Event) (subscriptionSchedule 
 	}
 	return
 }
+
+// ProcessEventTaxRate processes the incoming event and binds the raw data to a stripe.TaxRate struct.
+/*
+- https://docs.stripe.com/api/tax_rates/object
+
+- `tax_rate.created`
+
+- `tax_rate.updated`
+*/
+func ProcessEventTaxRate(event stripe.Event) (taxRate stripe.TaxRate, err error) {
+	switch event.Type {
+	case
+		"tax_rate.created",
+		"tax_rate.updated":
+		err = json.Unmarshal(event.Data.Raw, &taxRate)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}

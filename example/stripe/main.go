@@ -260,6 +260,16 @@ func main() {
 				}
 				fmt.Printf("subscription schedule: %+v\n", subscriptionSchedule)
 			}
+
+			// event.Type contains the prefix "tax_rate."
+			if strings.HasPrefix(string(e.Type), "tax_rate.") {
+				taxRate, err := wh.ProcessEventTaxRate(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("tax rate: %+v\n", taxRate)
+			}
 		}(event)
 
 		// immediately respond with a 200 status code to stripe

@@ -239,8 +239,9 @@ processing webhooks easy
       - [x] `subscription_schedule.expiring`
       - [x] `subscription_schedule.released`
       - [x] `subscription_schedule.updated`
-    - [ ] `tax_rate.created`
-    - [ ] `tax_rate.updated`
+    - [x] [tax_rate](https://docs.stripe.com/api/tax_rates)
+      - [x] `tax_rate.created`
+      - [x] `tax_rate.updated`
     - [ ] `tax.settings.updated`
     - [ ] `terminal.reader.action_failed`
     - [ ] `terminal.reader.action_succeeded`
