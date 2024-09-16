@@ -165,8 +165,9 @@ processing webhooks easy
       - [x] `payment_intent.processing`
       - [x] `payment_intent.requires_action`
       - [x] `payment_intent.succeeded`
-    - [ ] `payment_link.created`
-    - [ ] `payment_link.updated`
+    - [x] [payment_link](https://docs.stripe.com/api/payment-link)
+      - [x] `payment_link.created`
+      - [x] `payment_link.updated`
     - [x] [payment_method](https://docs.stripe.com/api/payment_methods)
       - [x] `payment_method.attached`
       - [x] `payment_method.automatically_updated`

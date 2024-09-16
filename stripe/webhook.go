@@ -342,6 +342,26 @@ func ProcessEventPaymentIntent(event stripe.Event) (paymentIntent stripe.Payment
 	return
 }
 
+// ProcessEventPaymentLink processes the incoming event and binds the raw data to a stripe.PaymentLink struct.
+/*
+- https://docs.stripe.com/api/payment-link/object
+
+- `payment_link.created`
+
+- `payment_link.updated`
+*/
+func ProcessEventPaymentLink(event stripe.Event) (paymentLink stripe.PaymentLink, err error) {
+	switch event.Type {
+	case
+		"payment_link.created",
+		"payment_link.updated":
+		err = json.Unmarshal(event.Data.Raw, &paymentLink)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventPaymentMethod processes the incoming event and binds the raw data to a stripe.PaymentMethod struct.
 /*
 - https://docs.stripe.com/api/payment_methods/object
