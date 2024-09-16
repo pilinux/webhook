@@ -221,6 +221,16 @@ func main() {
 				fmt.Printf("product: %+v\n", product)
 			}
 
+			// event.Type contains the prefix "promotion_code."
+			if strings.HasPrefix(string(e.Type), "promotion_code.") {
+				promotionCode, err := wh.ProcessEventPromotionCode(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("promotion code: %+v\n", promotionCode)
+			}
+
 			// event.Type contains the prefix "quote."
 			if strings.HasPrefix(string(e.Type), "quote.") {
 				quote, err := wh.ProcessEventQuote(e)

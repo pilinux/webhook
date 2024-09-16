@@ -568,6 +568,26 @@ func ProcessEventProduct(event stripe.Event) (product stripe.Product, err error)
 	return
 }
 
+// ProcessEventPromotionCode processes the incoming event and binds the raw data to a stripe.PromotionCode struct.
+/*
+- https://docs.stripe.com/api/promotion_codes/object
+
+- `promotion_code.created`
+
+- `promotion_code.updated`
+*/
+func ProcessEventPromotionCode(event stripe.Event) (promotionCode stripe.PromotionCode, err error) {
+	switch event.Type {
+	case
+		"promotion_code.created",
+		"promotion_code.updated":
+		err = json.Unmarshal(event.Data.Raw, &promotionCode)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventQuote processes the incoming event and binds the raw data to a stripe.Quote struct.
 /*
 - https://docs.stripe.com/api/quotes/object
