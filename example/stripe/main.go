@@ -67,6 +67,14 @@ func main() {
 					return
 				}
 				fmt.Printf("subscription: %+v\n", subscription)
+			} else if strings.HasPrefix(string(e.Type), "customer.tax_id.") {
+				// event.Type contains the prefix "customer.tax_id."
+				taxID, err := wh.ProcessEventCustomerTaxID(e)
+				if err != nil {
+					fmt.Println("error processing event:", err)
+					return
+				}
+				fmt.Printf("tax id: %+v\n", taxID)
 			} else if strings.HasPrefix(string(e.Type), "customer.") {
 				// event.Type contains the prefix "customer." but not "customer.subscription."
 				customer, err := wh.ProcessEventCustomer(e)

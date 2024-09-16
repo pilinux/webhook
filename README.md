@@ -95,9 +95,10 @@ processing webhooks easy
       - [x] `customer.subscription.resumed`
       - [x] `customer.subscription.trial_will_end`
       - [x] `customer.subscription.updated`
-    - [ ] `customer.tax_id.created`
-    - [ ] `customer.tax_id.deleted`
-    - [ ] `customer.tax_id.updated`
+    - [x] [customer.tax_id](https://docs.stripe.com/api/tax_ids)
+      - [x] `customer.tax_id.created`
+      - [x] `customer.tax_id.deleted`
+      - [x] `customer.tax_id.updated`
     - [ ] `entitlements.active_entitlement_summary.updated`
     - [ ] `file.created`
     - [ ] `financial_connections.account.created`

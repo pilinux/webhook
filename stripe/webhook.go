@@ -186,6 +186,29 @@ func ProcessEventCustomerSubscription(event stripe.Event) (subscription stripe.S
 	return
 }
 
+// ProcessEventCustomerTaxID processes the incoming event and binds the raw data to a stripe.TaxID struct.
+/*
+- https://docs.stripe.com/api/tax_ids/object
+
+- `customer.tax_id.created`
+
+- `customer.tax_id.deleted`
+
+- `customer.tax_id.updated`
+*/
+func ProcessEventCustomerTaxID(event stripe.Event) (taxID stripe.TaxID, err error) {
+	switch event.Type {
+	case
+		"customer.tax_id.created",
+		"customer.tax_id.deleted",
+		"customer.tax_id.updated":
+		err = json.Unmarshal(event.Data.Raw, &taxID)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventInvoice processes the incoming event and binds the raw data to a stripe.Invoice struct.
 /*
 - https://docs.stripe.com/api/invoices/object
