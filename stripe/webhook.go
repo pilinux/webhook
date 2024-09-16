@@ -148,6 +148,29 @@ func ProcessEventCoupon(event stripe.Event) (coupon stripe.Coupon, err error) {
 	return
 }
 
+// ProcessEventCreditNote processes the incoming event and binds the raw data to a stripe.CreditNote struct.
+/*
+- https://docs.stripe.com/api/credit_notes/object
+
+- `credit_note.created`
+
+- `credit_note.updated`
+
+- `credit_note.voided`
+*/
+func ProcessEventCreditNote(event stripe.Event) (creditNote stripe.CreditNote, err error) {
+	switch event.Type {
+	case
+		"credit_note.created",
+		"credit_note.updated",
+		"credit_note.voided":
+		err = json.Unmarshal(event.Data.Raw, &creditNote)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventCustomer processes the incoming event and binds the raw data to a stripe.Customer struct.
 /*
 - https://docs.stripe.com/api/customers/object
