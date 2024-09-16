@@ -342,6 +342,32 @@ func ProcessEventPaymentIntent(event stripe.Event) (paymentIntent stripe.Payment
 	return
 }
 
+// ProcessEventPaymentMethod processes the incoming event and binds the raw data to a stripe.PaymentMethod struct.
+/*
+- https://docs.stripe.com/api/payment_methods/object
+
+- `payment_method.attached`
+
+- `payment_method.automatically_updated`
+
+- `payment_method.detached`
+
+- `payment_method.updated`
+*/
+func ProcessEventPaymentMethod(event stripe.Event) (paymentMethod stripe.PaymentMethod, err error) {
+	switch event.Type {
+	case
+		"payment_method.attached",
+		"payment_method.automatically_updated",
+		"payment_method.detached",
+		"payment_method.updated":
+		err = json.Unmarshal(event.Data.Raw, &paymentMethod)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventPlan processes the incoming event and binds the raw data to a stripe.Plan struct.
 /*
 - https://docs.stripe.com/api/plans/object

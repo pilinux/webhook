@@ -167,10 +167,11 @@ processing webhooks easy
       - [x] `payment_intent.succeeded`
     - [ ] `payment_link.created`
     - [ ] `payment_link.updated`
-    - [ ] `payment_method.attached`
-    - [ ] `payment_method.automatically_updated`
-    - [ ] `payment_method.detached`
-    - [ ] `payment_method.updated`
+    - [x] [payment_method](https://docs.stripe.com/api/payment_methods)
+      - [x] `payment_method.attached`
+      - [x] `payment_method.automatically_updated`
+      - [x] `payment_method.detached`
+      - [x] `payment_method.updated`
     - [ ] `payout.canceled`
     - [ ] `payout.created`
     - [ ] `payout.failed`
