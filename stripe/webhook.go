@@ -233,6 +233,32 @@ func ProcessEventCustomerDiscount(event stripe.Event) (discount stripe.Discount,
 	return
 }
 
+// ProcessEventCustomerSource processes the incoming event and binds the raw data to a stripe.Source struct.
+/*
+- https://docs.stripe.com/api/sources/object
+
+- `customer.source.created`
+
+- `customer.source.deleted`
+
+- `customer.source.expiring`
+
+- `customer.source.updated`
+*/
+func ProcessEventCustomerSource(event stripe.Event) (source stripe.Source, err error) {
+	switch event.Type {
+	case
+		"customer.source.created",
+		"customer.source.deleted",
+		"customer.source.expiring",
+		"customer.source.updated":
+		err = json.Unmarshal(event.Data.Raw, &source)
+	default:
+		err = fmt.Errorf("unhandled event type: %s", event.Type)
+	}
+	return
+}
+
 // ProcessEventCustomerSubscription processes the incoming event and binds the raw data to a stripe.Subscription struct.
 /*
 - https://docs.stripe.com/api/subscriptions/object
